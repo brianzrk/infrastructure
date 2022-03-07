@@ -1,0 +1,64 @@
+server:
+  port: 8080
+# DataSource Config
+spring:
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java #重启目录
+      exclude: WEB-INF/**
+  datasource:
+    #    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    #    url: jdbc:p6spy:mysql://119.45.227.125:3306/infras?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:p6spy:mysql://119.45.227.125:3306/infras?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: P@ssw0rd
+  freemarker:
+    settings:
+      classic_compatible: true
+      datetime_format: yyyy-MM-dd HH:mm
+      number_format: 0.##
+  redis:
+    host: 119.45.227.125
+    port: 6379
+    password: redis
+  #    password:
+  elasticsearch:
+    rest:
+      #      uris: http://10.2.41.122:9200
+      #      uris: http://119.45.227.125:9200
+      uris: http://10.2.25.47:9200
+      username: elastic
+      #      password: elastic
+      password: 123456
+  rabbitmq:
+    username: root
+    password: admin
+    host: 119.45.227.125
+    port: 5672
+
+
+  kafka:
+#    bootstrap-servers: 10.153.205.20:9092,10.153.205.20:9093,10.153.205.20:9094
+    bootstrap-servers: 10.153.205.20:8686
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+
+# shiro默认使用的redis服务器
+#shiro-redis:
+#  enabled: true
+#  redis-manager:
+#    host: 119.45.227.125:6379
+#
+#brian:
+#  jwt:
+#    # 加密密钥
+#    secret: cbd44f8b5b48a51f7dab98abcdf45d4e
+#    # 有效时长 7 天， 单位：秒
+#    expire: 604800
+#    header: Authorization
+
+
